@@ -12,17 +12,22 @@ then
   read answer
   if [ $answer = "Y" -o $answer = "y" ]
   then
-  	echo "yesss" # added for debug purposes delete before merging
-  	echo "overriding text..." > $1
+  	 sed -n '5,6p' giris.txt > $1
+  	 sed -n '1,2p' gelisme.txt >> $1
+  	 sed -n '3,4p' sonuc.txt >> $1
+  	
   elif	[ $answer = "N" -o $answer = "n" ]
   then
-  	echo "nooo" # added for debug purposes delete before merging
+  	sed -n '5,6p' giris.txt >> $1
+  	sed -n '1,2p' gelisme.txt >> $1
+  	sed -n '3,4p' sonuc.txt >> $1
   else
   	echo "please enter either y/n"
   fi		
 else
-  echo "test the script" > $1
+  	sed -n '5,6p' giris.txt > $1
+  	sed -n '1,2p' gelisme.txt >> $1
+  	sed -n '3,4p' sonuc.txt >> $1
 fi
-
 
 
