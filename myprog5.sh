@@ -26,9 +26,40 @@ then
     exit $non_existing_directory
 fi
 
-filename="filepaths.txt"
-touch $filename
+ask_delete ()
+{
+    if [ -n $1 ]
+    then
+        ans=""
 
-find $dir -type f \( -name "$1" -and ! -name "$filename" \)
+        while [[ ! $ans =~ [yYnN] ]]
+        do
+            echo -n "Do you want to delete $line? (y/n): ";
+            read ans </dev/tty
+            echo ""
+        done
+
+        if [[ $ans =~ [yY] ]]
+        then
+            rm $1
+        fi
+    fi
+
+    return 0
+}
+
+filename="filespaths.txt"
+touch $filename
+trap 'rm $filename' EXIT
+
+#find $dir -type f \( -name "$1" -and ! -name "$filename" \)
+
+#rm $filename
+find $dir -type f \( -name "$1" -and ! -name "$filename" \) > $filename
+
+while read line
+do
+    ask_delete $line
+done < $filename
 
 rm $filename
