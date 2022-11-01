@@ -48,4 +48,5 @@ else
   	sed -n ''"$randomLine3"','"$((randomLine3+1))"'p' sonuc.txt >> $1
 fi
 
+echo "A random story is created and stored in $1."
 
