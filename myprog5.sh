@@ -36,12 +36,13 @@ ask_delete ()
         do
             echo -n "Do you want to delete $line? (y/n): ";
             read ans </dev/tty
-            echo ""
+            #echo ""
         done
 
         if [[ $ans =~ [yY] ]]
         then
             rm $1
+            echo "1 File Deleted"
         fi
     fi
 
@@ -49,6 +50,7 @@ ask_delete ()
 }
 
 filename="filespaths.txt"
+filesFound=0
 touch $filename
 trap 'rm $filename' EXIT
 
@@ -59,7 +61,11 @@ find $dir -type f \( -name "$1" -and ! -name "$filename" \) > $filename
 
 while read line
 do
+    filesFound=$((filesFound+1))
     ask_delete $line
 done < $filename
 
-rm $filename
+if [ $filesFound -eq 0 ]
+then
+    echo "No Files found"
+fi
