@@ -53,10 +53,6 @@ filename="filespaths.txt"
 filesFound=0
 touch $filename
 trap 'rm $filename' EXIT
-
-#find $dir -type f \( -name "$1" -and ! -name "$filename" \)
-
-#rm $filename
 find $dir -type f \( -name "$1" -and ! -name "$filename" \) > $filename
 
 while read line
