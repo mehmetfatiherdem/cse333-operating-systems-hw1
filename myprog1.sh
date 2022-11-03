@@ -8,16 +8,20 @@ shift=$2
 wordEncrypted=""
 alphabet="abcdefghijklmnopqrstuvwxyz"
 length=`echo -n $1 | wc -c`
-echo "$length"
 counter=0
 shiftTemp=$shift
 decimal=10
-one=1
+
+if [ -z "$word" ] || [ -z "$shift" ];
+then 
+   echo "You must enter 2 input. The first must be a word and the second a number.";
+   exit
+fi
 
 #this statement checks if the word (first input) contains number
 if [[ $word =~ [0-9] ]]
 then  
-    echo "Input contains number"
+    echo "Your word contains number(s)"
     exit
 fi
 
@@ -30,11 +34,12 @@ done
 
 
 #this statement checks if inputs are correct
-if [ "$length" -eq "$counter" ] || [ "$counter" -eq 1 ]
+if [ "$length" != "$counter" ] && [ "$counter" != 1 ]
 then 
-    echo "your imputs are correct"
-else
-    echo "your inputs are incorrect"
+    echo "your inputs are incorrect."
+    echo "The number of digits of the number you enter must be the same"
+    echo "as the number of letters in the word,"
+    echo "or it must be a single digit"
     exit
 fi
 
