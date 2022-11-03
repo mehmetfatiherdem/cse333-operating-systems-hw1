@@ -16,11 +16,6 @@ randomLine1=${lines[$(($RANDOM % ${#lines[@]}))]}
 randomLine2=${lines[$(($RANDOM % ${#lines[@]}))]}
 randomLine3=${lines[$(($RANDOM % ${#lines[@]}))]}
 
-## added for debug purposes remove them before merging
-echo "$randomLine1"
-echo "$randomLine2"
-echo "$randomLine3"
-
 
 ## check if the file exists
 if [ -e $1 ] 
@@ -28,7 +23,7 @@ then
   		
 	while [ 1 ]
 	do
-		echo "$1 exists. Do you want it to be modified? (y/n):"
+		echo -n "$1 exists. Do you want it to be modified? (y/n):"
 		read answer
 	
 		if [ $answer = "Y" -o $answer = "y" ]
