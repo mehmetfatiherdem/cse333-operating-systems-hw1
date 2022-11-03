@@ -4,22 +4,32 @@ hexnumbers="0123456789ABCDEF"
 
 lowerBound=2
 upperBound=$1
+numberOfArgument=$#
 
-if [[ $upperBound -lt 2 ]]
+echo "$numberOfArgument"
+
+if [ -z "$upperBound" ];
 then
-    echo "your input must be grater than 1"
+    echo "You must enter the upper bound of the range"
     exit
 fi
 
-if [[ $upperBound -eq 2 ]]
-then
-    echo "Hexadecimal of 2 is 2"
-    exit
-fi
 
 if [[ $upperBound =~ ["a"-"z"] ]]
 then  
-    echo "Input contains letter."
+    echo "Input contains letter. You should enter a number"
+    exit
+fi
+
+if [[ $numberOfArgument -gt 1 ]]
+then
+   echo "You must enter only 1 argument"
+   exit
+fi
+
+if [[ $upperBound -lt 3 ]]
+then
+    echo "your input must be grater than 2"
     exit
 fi
 
