@@ -5,6 +5,18 @@ hexnumbers="0123456789ABCDEF"
 lowerBound=2
 upperBound=$1
 
+if [[ $upperBound -lt 2 ]]
+then
+    echo "your input must be grater than 1"
+    exit
+fi
+
+if [[ $upperBound -eq 2 ]]
+then
+    echo "Hexadecimal of 2 is 2"
+    exit
+fi
+
 if [[ $upperBound =~ ["a"-"z"] ]]
 then  
     echo "Input contains letter."
@@ -49,5 +61,3 @@ for ((i=$lowerBound; i< $upperBound; i++))
      
    fi 
 done
-
-echo "code finished"
