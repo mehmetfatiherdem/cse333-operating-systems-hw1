@@ -1,3 +1,5 @@
+#!/bin/bash
+
 writableDir="writable"
 
 #Create the writable directory if it does not exist already
