@@ -11,6 +11,13 @@ length=`echo -n $1 | wc -c`
 counter=0
 shiftTemp=$shift
 decimal=10
+numberOfArgument=$#
+
+if [[ $numberOfArgument -gt 2 ]]
+then
+   echo "You must enter only 2 argument"
+   exit
+fi
 
 if [ -z "$word" ] || [ -z "$shift" ];
 then 
