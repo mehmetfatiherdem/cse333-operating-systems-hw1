@@ -13,22 +13,30 @@ shiftTemp=$shift
 decimal=10
 numberOfArgument=$#
 
-if [[ $numberOfArgument -gt 2 ]]
-then
-   echo "You must enter only 2 argument"
-   exit
-fi
+#if [[ $numberOfArgument -gt 2 ]]
+#then
+#   echo "You must enter only 2 argument"
+#   exit
+#fi
 
-if [ -z "$word" ] || [ -z "$shift" ];
+if [ -z "$word" ] || [ -z "$shift" ] || [ $numberOfArgument -gt 2 ];
 then 
    echo "You must enter 2 input. The first must be a word and the second a number.";
    exit
 fi
 
+
 #this statement checks if the word (first input) contains number
 if [[ $word =~ [0-9] ]]
 then  
     echo "Your word contains number(s)"
+    exit
+fi
+
+#this statement checks if the number (second input) contains letter
+if [[ $shift =~ ["a"-"z"] ]]
+then  
+    echo "Your second input contains letter(s)"
     exit
 fi
 
