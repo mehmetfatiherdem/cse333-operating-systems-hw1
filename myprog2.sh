@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## check if the arg exists and is a valid file name with a txt extension if not exit
+## check if the arg exists and is a valid file name with a txt extension if not exit the program
 if [ $# -ne 1 ] || [  "${1%.txt}" == "$1" ]
 then
 	echo "$0 : You must give/supply 1 file name with a txt extension"
@@ -9,9 +9,9 @@ fi
 
 
 ## non-empty lines array
-lines=(1 3 5)
+lines=(1 3 5) ## in the given txt files we have line 1, 3 and 5 as non-empty lines so I store them in this array
 
-
+## Here, we generate 3 random lines from the lines array
 randomLine1=${lines[$(($RANDOM % ${#lines[@]}))]}
 randomLine2=${lines[$(($RANDOM % ${#lines[@]}))]}
 randomLine3=${lines[$(($RANDOM % ${#lines[@]}))]}
@@ -27,15 +27,11 @@ then
 		read answer
 	
 		if [ $answer = "Y" -o $answer = "y" ]
-  		then
+  		then	
   	 		break
   	 		
   		elif	[ $answer = "N" -o $answer = "n" ]
   		then
-  			sed -n ''"$randomLine1"','"$((randomLine1+1))"'p' giris.txt >> $1 ## appends
-  			sed -n ''"$randomLine2"','"$((randomLine2+1))"'p' gelisme.txt >> $1
-  			sed -n ''"$randomLine3"','"$((randomLine3+1))"'p' sonuc.txt >> $1
-  			echo "A random story is created and stored in $1."
   			exit 1
   		else
   			echo "please enter either y/n"
@@ -50,7 +46,5 @@ sed -n ''"$randomLine1"','"$((randomLine1+1))"'p' giris.txt > $1 ## overrides
 sed -n ''"$randomLine2"','"$((randomLine2+1))"'p' gelisme.txt >> $1
 sed -n ''"$randomLine3"','"$((randomLine3+1))"'p' sonuc.txt >> $1
  		
-  	
-
 echo "A random story is created and stored in $1."
 
