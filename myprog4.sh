@@ -6,33 +6,13 @@ lowerBound=2
 upperBound=$1
 numberOfArgument=$#
 
-echo "$numberOfArgument"
 
-if [ -z "$upperBound" ];
+
+if [ -z "$upperBound" ] || [[ $upperBound =~ ["a"-"z"] ]] || [[ $numberOfArgument -gt 1 ]] || [[ $upperBound -lt 3 ]];
 then
-    echo "You must enter the upper bound of the range"
+    echo "You must enter exactly 1 argument which must be an integer greater than 2 for the upper bound value"
     exit
 fi
-
-
-if [[ $upperBound =~ ["a"-"z"] ]]
-then  
-    echo "Input contains letter. You should enter a number"
-    exit
-fi
-
-if [[ $numberOfArgument -gt 1 ]]
-then
-   echo "You must enter only 1 argument"
-   exit
-fi
-
-if [[ $upperBound -lt 3 ]]
-then
-    echo "your input must be grater than 2"
-    exit
-fi
-
 
 for ((i=$lowerBound; i< $upperBound; i++))
   do
