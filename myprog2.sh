@@ -42,6 +42,7 @@ then
 	done
 fi
 
+## open or create the file and override the content in it
 sed -n ''"$randomLine1"','"$((randomLine1+1))"'p' giris.txt > $1 ## overrides
 sed -n ''"$randomLine2"','"$((randomLine2+1))"'p' gelisme.txt >> $1
 sed -n ''"$randomLine3"','"$((randomLine3+1))"'p' sonuc.txt >> $1
