@@ -13,11 +13,6 @@ shiftTemp=$shift
 decimal=10
 numberOfArgument=$#
 
-#if [[ $numberOfArgument -gt 2 ]]
-#then
-#   echo "You must enter only 2 argument"
-#   exit
-#fi
 
 if [ -z "$word" ] || [ -z "$shift" ] || [ $numberOfArgument -gt 2 ];
 then 
@@ -57,7 +52,6 @@ then
     echo "or it must be a single digit"
     exit
 fi
-
 
 
 #this statement checks if the shifting number has more than one digit
@@ -102,7 +96,5 @@ else
    done
 
 fi
-
-
 
 echo "$wordEncrypted"
